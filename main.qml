@@ -13,7 +13,7 @@ ApplicationWindow {
         id: posText
         anchors.centerIn: parent
         text: qsTr("Dummy Dummy")
-        font.pixelSize: parent.width < parent.height ? parent.width * 0.1 : parent.height * 0.1
+        font.pixelSize: parent.width < parent.height ? parent.width * 0.05 : parent.height * 0.05
         font.family: "Open Sans Regular"
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
@@ -21,6 +21,7 @@ ApplicationWindow {
 
     PositionSource {
         id: pos
+        preferredPositioningMethods: PositionSource.SatellitePositioningMethods
     }
 
     Timer {
@@ -29,7 +30,7 @@ ApplicationWindow {
         repeat: true
         running: true
         onTriggered: {
-            posText.text = "Latitude: " + String(pos.position.coordinate.latitude) + "\nLongitude: " + String(pos.position.coordinate.longitude) + "\nSpeed (km/h): " + String((pos.position.coordinate.speed))
+            posText.text = "Latitude: " + String(pos.position.coordinate.latitude) + "\nLongitude: " + String(pos.position.coordinate.longitude) + "\nSpeed (m/s): " + String((pos.position.speed))
         }
     }
 }
