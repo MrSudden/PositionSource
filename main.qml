@@ -22,15 +22,10 @@ ApplicationWindow {
     PositionSource {
         id: pos
         preferredPositioningMethods: PositionSource.SatellitePositioningMethods
-    }
-
-    Timer {
-        interval: 2000
-        triggeredOnStart: true
-        repeat: true
-        running: true
-        onTriggered: {
-            posText.text = "Latitude: " + String(pos.position.coordinate.latitude) + "\nLongitude: " + String(pos.position.coordinate.longitude) + "\nSpeed (m/s): " + String((pos.position.speed))
+        updateInterval: 1000
+        active: true
+        onPositionChanged: {
+                posText.text = "Latitude: " + String(pos.position.coordinate.latitude) + "\nLongitude: " + String(pos.position.coordinate.longitude) + "\nSpeed (m/s): " + String((pos.position.speed))
         }
     }
 }
